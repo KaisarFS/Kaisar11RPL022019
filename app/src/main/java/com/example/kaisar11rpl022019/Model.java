@@ -1,77 +1,60 @@
 package com.example.kaisar11rpl022019;
 
 public class Model {
-    String id;
-    String noktp;
-    String email;
-    String password;
-    String nama;
-    String nohp;
-    String alamat;
-    String roleuser;
+    //https://image.tmdb.org/t/p/w500/k68nPLbIST6NP96JmTxmZijEvCA.jpg
+    String original_title;
+    String release_date;
+    String poster_path;
+    Boolean adult;
+    String overview;
+    int vote_count;
 
-    public String getId() {
-        return id;
+    public String getOriginal_title() {
+        return original_title;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
     }
 
-    public String getNoktp() {
-        return noktp;
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public void setNoktp(String noktp) {
-        this.noktp = noktp;
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPoster_path() {
+        return poster_path;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
     }
 
-    public String getPassword() {
-        return password;
+    public Boolean getAdult() {
+        return adult;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAdult(Boolean adult) {
+        this.adult = adult;
     }
 
-    public String getNama() {
-        return nama;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public String getNohp() {
-        return nohp;
+    public int getVote_count() {
+        return vote_count;
     }
 
-    public void setNohp(String nohp) {
-        this.nohp = nohp;
-    }
-
-    public String getAlamat() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
-    }
-
-    public String getRoleuser() {
-        return roleuser;
-    }
-
-    public void setRoleuser(String roleuser) {
-        this.roleuser = roleuser;
+    public void setVote_count(int vote_count) {
+        this.vote_count = vote_count;
     }
 
 

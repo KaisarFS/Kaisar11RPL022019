@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#5A5959"
     tools:context=".MainMenu">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/menu1"
+        app:cardBackgroundColor="#30A0F4"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_margin="20dp"
@@ -37,7 +39,7 @@
                     android:marqueeRepeatLimit="marquee_forever"
                     android:padding="10dp"
                     android:singleLine="true"
-                    android:text="Lihat Product"
+                    android:text="Lihat Daftar Film"
                     android:textColor="#000000"
                     tools:targetApi="lollipop" />
 
@@ -50,6 +52,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/menu2"
+        app:cardBackgroundColor="#30A0F4"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_margin="20dp"
@@ -77,7 +80,7 @@
                     android:marqueeRepeatLimit="marquee_forever"
                     android:padding="10dp"
                     android:singleLine="true"
-                    android:text="Lihat Product Favouriteku"
+                    android:text="Lihat Film yang akan datang"
                     android:textColor="#000000"
                     tools:targetApi="lollipop" />
 

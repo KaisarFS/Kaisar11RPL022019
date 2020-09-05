@@ -25,13 +25,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
     View viewku;
     int posku;
 
-    //di klik biasa
     interface Callback {
         void onClick(int position);
         void test();
     }
 
-    //konstruktor untuk pass data dari activity ke adapter
+
     public DataAdapter(ArrayList<Model> dataList, Callback callback) {
         this.callback = callback;
         this.dataList = dataList;
@@ -47,10 +46,14 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
 
     @Override
     public void onBindViewHolder(final DatakuViewHolder holder, final int position) {
-        // attach data object
-        holder.txtNama.setText(dataList.get(position).getNama());
-        holder.txtNpm.setText(dataList.get(position).getEmail());
-
+        holder.txtNama.setText(dataList.get(position).getOriginal_title());
+        holder.txtNpm.setText(dataList.get(position).getOverview());
+        Log.d("makananku", "onBindViewHolder: "+dataList.get(position).getPoster_path());
+        Glide.with(holder.itemView)
+                .load(dataList.get(position).getPoster_path())
+                .override(Target.SIZE_ORIGINAL)
+                .placeholder(R.mipmap.ic_launcher)
+                .into(holder.ivprofile);
 
     }
 
@@ -81,7 +84,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
             });
         }
 
-        // jika item diklik tahan
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             MenuItem Edit = menu.add(Menu.NONE, 1, 1, "Edit");
