@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -37,7 +37,6 @@ public class ListData extends AppCompatActivity {
         //addData();
         addDataOnline();
     }
-
     void addData() {
         //offline, isi data offline dulu
         DataArrayList = new ArrayList<>();
@@ -79,18 +78,19 @@ public class ListData extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        //do anything with response
-                        Log.d("hasiljson","onResponse: " + response.toString());
-                        //jika sdh berhasil debugm lanjutkan code bibawaah ini
-                        DataArrayList =  new ArrayList<>();
+                        // do anything with response
+                        Log.d("hasiljson", "onResponse: " + response.toString());
+                        //jika sudah berhasil debugm lanjutkan code dibawah ini
+                        DataArrayList = new ArrayList<>();
                         Model modelku;
                         try {
-                            Log.d("hasiljson","onResponse: " + response.toString());
+                            Log.d("hasiljson", "onResponse: " + response.toString());
                             JSONArray jsonArray = response.getJSONArray("results");
-                            Log.d("hasiljson","onResponse: " + jsonArray.toString());
-                            for (int i = 0; i < jsonArray.length(); i++){
+                            Log.d("hasiljson2", "onResponse: " + jsonArray.toString());
+                            for (int i = 0; i < jsonArray.length(); i++) {
                                 modelku = new Model();
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                modelku.setId(jsonObject.getInt("id"));
                                 modelku.setOriginal_title(jsonObject.getString("original_title"));
                                 modelku.setOverview(jsonObject.getString("overview"));
                                 modelku.setRelease_date(jsonObject.getString("release_date"));
@@ -105,6 +105,7 @@ public class ListData extends AppCompatActivity {
                                 public void onClick(int position) {
                                     Model movie = DataArrayList.get(position);
                                     Intent intent = new Intent(getApplicationContext(), DetailMovie.class);
+                                    intent.putExtra("id",movie.id);
                                     intent.putExtra("judul",movie.original_title);
                                     intent.putExtra("date",movie.release_date);
                                     intent.putExtra("deskripsi",movie.overview);
@@ -124,15 +125,17 @@ public class ListData extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
                     }
 
                     @Override
-                    public void onError(ANError anError) {
-                        //handle error
-                        Log.d("errorku","onError errorCode : " + anError.getErrorCode());
-                        Log.d("errorku","onError errorBody : " + anError.getErrorBody());
-                        Log.d("errorku","onError errorDetail : " + anError.getErrorDetail());
+                    public void onError(ANError error) {
+                        // handle error
+                        Log.d("errorku", "onError errorCode : " + error.getErrorCode());
+                        Log.d("errorku", "onError errorBody : " + error.getErrorBody());
+                        Log.d("errorku", "onError errorDetail : " + error.getErrorDetail());
                     }
                 });
     }
+
 }

@@ -1,8 +1,6 @@
 package com.example.kaisar11rpl022019;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
@@ -26,5 +24,11 @@ public class MainMenu extends AppCompatActivity {
             }
         });
         menu2 = (CardView)findViewById(R.id.menu2);
+        menu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ListDataFavourite.class));
+            }
+        });
     }
 }
